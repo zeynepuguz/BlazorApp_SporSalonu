@@ -1,5 +1,3 @@
-/* MembershipStatus Component Scoped Styles */
-
 .status-card[b-8sq120kcjo] {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border-radius: 16px;
@@ -80,10 +78,10 @@
 }
 
 [b-8sq120kcjo] .stat-label {
-    color: #666;              /* koyu gri – beyaz kartın üstünde net görünür */
+    color: #666;
     font-size: 0.9rem;
-    text-transform: none;     /* ÜYELİK PLANI yerine normal yazsın istersen */
-    letter-spacing: 0;        /* ister sıfır, istersen 0.5px bırakabilirsin */
+    text-transform: none;
+    letter-spacing: 0;
     font-weight: 600;
 }
 
@@ -133,9 +131,6 @@
     transform: translateY(-2px);
 }
 
-
-
-/* Responsive */
 @media (max-width: 768px) {
     .status-card[b-8sq120kcjo] {
         padding: 1.5rem;

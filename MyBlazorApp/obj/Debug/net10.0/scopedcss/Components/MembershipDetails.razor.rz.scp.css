@@ -1,5 +1,3 @@
-/* MembershipDetails Component Scoped Styles */
-
 [b-jctsya7w3s] .membership-card {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: none;
@@ -68,10 +66,9 @@
 .membership-details-wrapper[b-jctsya7w3s] {
     display: flex;
     flex-direction: column;
-    align-items: center;  /* Kart ve görseli ortalar */
+    align-items: center;
 }
 
-/* Beyaz kart normal davransın */
 .membership-card[b-jctsya7w3s] {
     width: 100%;
     margin-bottom: 0 !important;
@@ -80,21 +77,19 @@
     margin-bottom: 0 !important;
 }
 
-/* Alttaki bağımsız kart görseli */
 .membership-extra-visual-outer[b-jctsya7w3s] {
     margin-top: 0 !important;
-    padding-top: 0 !important;            /* Beyaz kart ile arası */
+    padding-top: 0 !important;
     display: flex;
     justify-content: center;
 }
 
 .membership-extra-visual-outer img[b-jctsya7w3s] {
-    max-width: 350px;            /* ss’deki gibi geniş */
+    max-width: 350px;
     width: 100%;
     border-radius: 18px;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     [b-jctsya7w3s] .membership-price {
         font-size: 2rem;
