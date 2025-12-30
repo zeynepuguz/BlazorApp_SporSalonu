@@ -27,6 +27,6 @@ public class UserMembership
     // Kullanıcı bilgileri
     public Member Member { get; set; } = new();
 
-    // TAM plan objesine erişim (Dashboard'ta çok önemli)
+    // TAM plan objesine erişim
     public Membership? Membership { get; set; }
 }

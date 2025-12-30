@@ -115,22 +115,20 @@
 
 
 @code {
-    // 🔹 Üst komponentten gelen model
+    // Üst komponentten gelen model
     [Parameter]
     public Member Member { get; set; } = new();
 
-    // 🔹 Seçilen üyelik planı (fiyat vs için)
+    // Seçilen üyelik planı (fiyat vs için)
     [Parameter]
     public Membership? SelectedMembership { get; set; }
 
-    // 🔹 Kayıt tamamlandığında dışarıya haber verecek event
+    // Kayıt tamamlandığında dışarıya haber verecek event
     [Parameter]
     public EventCallback<Member> OnSubmitted { get; set; }
 
-    // Şimdilik sadece tutarı taşıyoruz, ileride kart alanlarını ekleyeceğiz
     private PaymentInfo payment = new();
 
-    // Submit butonunda loading kontrolü
     private bool IsSubmitting { get; set; }
 
     protected override void OnParametersSet()
@@ -146,7 +144,6 @@
         IsSubmitting = true;
         try
         {
-            // Form valid olduğunda, doldurulmuş Member nesnesini üst komponente gönder
             if (OnSubmitted.HasDelegate)
             {
                 await OnSubmitted.InvokeAsync(Member);

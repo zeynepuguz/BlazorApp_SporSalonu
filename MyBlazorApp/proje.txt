@@ -76,7 +76,7 @@ Kadir IR (1220505055): Görevi -> Bileşen geliştirme (MemberRegistrationForm, 
   * MembershipStatus.razor - Üyelik durumu ve geri sayım bileşeni
   * MembershipStatus.razor.css - Üyelik durumu bileşeni stilleri
 - Sayfaların geliştirilmesi (Pages klasörü)
-  * MembershipRegister.razor - Üyelik kayıt sayfası (/memberships/{id}/register)
+  * MembershipRegister.razor - Üyelik kayıt sayfası (/memberships/{id}/register)cd
   * Dashboard.razor - Üyelik durumu sayfası (/dashboard)
   * (CSS: Global membership.css kullanılmıştır)
 - Global CSS tasarımı (wwwroot/css/membership.css)
@@ -86,5 +86,4 @@ Kadir IR (1220505055): Görevi -> Bileşen geliştirme (MemberRegistrationForm, 
 - Responsive tasarım uygulaması (mobil/masaüstü uyumu)
 - UI/UX iyileştirmeleri ve görsel tasarım
 - Bootstrap Icons entegrasyonu ve ikon kullanımı
-- wwwroot/index.html dosyasının yapılandırılması (CSS ve icon linkleri)
 

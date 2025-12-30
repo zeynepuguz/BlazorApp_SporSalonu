@@ -1,6 +1,4 @@
 /* /Components/MemberRegistrationForm.razor.rz.scp.css */
-/* MemberRegistrationForm Component Scoped Styles */
-
 [b-l68m03p1g2] .form-control-custom {
     border: 2px solid #e0e0e0;
     border-radius: 8px;
@@ -79,13 +77,13 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 120px;     /* kartlarla arası */
-    padding-bottom: 40px; /* sayfa sonuna boşluk */
+    margin-top: 120px;
+    padding-bottom: 40px;
 }
 
 .bottom-image-wrapper img[b-l68m03p1g2] {
-    max-width: 400px;     /* resmin genişliği */
-    opacity: 0.9;         /* istersen şık görünüm */
+    max-width: 400px;
+    opacity: 0.9;
 }
 
 
@@ -99,7 +97,6 @@
     border-left: 4px solid #dc3545;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     [b-l68m03p1g2] .form-control-custom {
         padding: 0.65rem 0.85rem;
@@ -107,8 +104,6 @@
 }
 
 /* /Components/MembershipDetails.razor.rz.scp.css */
-/* MembershipDetails Component Scoped Styles */
-
 [b-jctsya7w3s] .membership-card {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: none;
@@ -177,10 +172,9 @@
 .membership-details-wrapper[b-jctsya7w3s] {
     display: flex;
     flex-direction: column;
-    align-items: center;  /* Kart ve görseli ortalar */
+    align-items: center;
 }
 
-/* Beyaz kart normal davransın */
 .membership-card[b-jctsya7w3s] {
     width: 100%;
     margin-bottom: 0 !important;
@@ -189,21 +183,19 @@
     margin-bottom: 0 !important;
 }
 
-/* Alttaki bağımsız kart görseli */
 .membership-extra-visual-outer[b-jctsya7w3s] {
     margin-top: 0 !important;
-    padding-top: 0 !important;            /* Beyaz kart ile arası */
+    padding-top: 0 !important;
     display: flex;
     justify-content: center;
 }
 
 .membership-extra-visual-outer img[b-jctsya7w3s] {
-    max-width: 350px;            /* ss’deki gibi geniş */
+    max-width: 350px;
     width: 100%;
     border-radius: 18px;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     [b-jctsya7w3s] .membership-price {
         font-size: 2rem;
@@ -211,8 +203,6 @@
 }
 
 /* /Components/MembershipList.razor.rz.scp.css */
-/* MembershipList Component Scoped Styles */
-
 [b-a3hqnne9j7] .membership-card {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: none;
@@ -321,7 +311,6 @@
     padding-left: 0.5rem;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     [b-a3hqnne9j7] .membership-card {
         margin-bottom: 1.5rem;
@@ -333,8 +322,6 @@
 }
 
 /* /Components/MembershipStatus.razor.rz.scp.css */
-/* MembershipStatus Component Scoped Styles */
-
 .status-card[b-8sq120kcjo] {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border-radius: 16px;
@@ -415,10 +402,10 @@
 }
 
 [b-8sq120kcjo] .stat-label {
-    color: #666;              /* koyu gri – beyaz kartın üstünde net görünür */
+    color: #666;
     font-size: 0.9rem;
-    text-transform: none;     /* ÜYELİK PLANI yerine normal yazsın istersen */
-    letter-spacing: 0;        /* ister sıfır, istersen 0.5px bırakabilirsin */
+    text-transform: none;
+    letter-spacing: 0;
     font-weight: 600;
 }
 
@@ -468,9 +455,6 @@
     transform: translateY(-2px);
 }
 
-
-
-/* Responsive */
 @media (max-width: 768px) {
     .status-card[b-8sq120kcjo] {
         padding: 1.5rem;
@@ -635,12 +619,10 @@ main[b-pv57ownmzj] {
     }
 
     .collapse[b-soj9rbgjfe] {
-        /* Never collapse the sidebar for wide screens */
         display: block;
     }
 
     .nav-scrollable[b-soj9rbgjfe] {
-        /* Allow sidebar to scroll for tall menus */
         height: calc(100vh - 3.5rem);
         overflow-y: auto;
     }
@@ -675,7 +657,7 @@ main[b-pv57ownmzj] {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.45); /* yarı karanlık */
+    background: rgba(0, 0, 0, 0.45);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -683,7 +665,6 @@ main[b-pv57ownmzj] {
     animation: fadeIn-b-z4najtkjxy 0.3s ease-out;
 }
 
-/* Ortadaki mesaj kutusu */
 .message-box[b-z4najtkjxy] {
     background: white;
     padding: 24px 35px;

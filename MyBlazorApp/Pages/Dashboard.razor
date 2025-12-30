@@ -72,23 +72,6 @@
 
         <div class="card-body">
 
-            <!-- 🔵 AVATAR KISMI (YENİ) -->
-            <div class="text-center mb-3">
-                <img src="@CurrentAvatar"
-                     alt="Avatar"
-                     class="profile-avatar" />
-
-                @if (isEditingContact)
-                {
-                    <div class="mt-2">
-                        <label class="btn btn-sm btn-outline-primary">
-                            Avatar Seç
-                            <InputFile OnChange="OnAvatarChange" accept="image/*" />
-                        </label>
-                    </div>
-                }
-            </div>
-
             <!-- Ad Soyad -->
             <div class="mb-3">
                 <div class="stat-label mb-1">
@@ -176,11 +159,6 @@
     private string? editEmail;
     private string? editPhone;
 
-    private string CurrentAvatar =>
-        string.IsNullOrEmpty(userMembership?.Member.AvatarUrl)
-            ? "img/default-avatar.png"
-            : userMembership.Member.AvatarUrl;
-
     private string? contactMessage;
     private bool showContactMessage;
 
@@ -190,7 +168,7 @@
         showMessage = true;
         StateHasChanged();
 
-        await Task.Delay(3000); // 3 saniye bekle
+        await Task.Delay(3000);
         showMessage = false;
         StateHasChanged();
     }
@@ -229,25 +207,17 @@ private async Task HandleRenew()
     // Plan süresi: Örn. 30, 180, 365 gün
     var duration = userMembership.DurationDays;
 
-    // Eğer DurationDays ayarlanmamışsa, mevcut üyelikten hesapla
+    // Eğer DurationDays ayarlanmamışsa, mevcut üyelikten hesaplar
     if (duration <= 0)
     {
         var diff = (userMembership.EndDate.Date - userMembership.StartDate.Date).Days;
-        duration = diff > 0 ? diff : 30; // yine de 0 çıkarsa 30 gün varsay
+        duration = diff > 0 ? diff : 30; // yine de 0 çıkarsa 30 gün varsayar
     }
 
-    // 🔹 Eski davranış: eski bitişe ekliyorduk
-    // var newStartDate = userMembership.EndDate.Date < today ? today : userMembership.EndDate.Date;
-    // var newEndDate = newStartDate.AddDays(duration);
-
-    // 🔹 Yeni istediğin davranış:
-    //    - Her yenilemede üyelik BUGÜN'den başlasın
-    //    - Plan süresi kadar ileri bir bitiş tarihi olsun
     userMembership.StartDate = today;
     userMembership.EndDate   = today.AddDays(duration);
     userMembership.IsActive  = true;
 
-    // Test kodu yerine gerçek bir kod üretelim
     userMembership.MembershipCode = MembershipService.GenerateMembershipCode();
 
     await LocalStorageService.SaveMembershipAsync(userMembership);
@@ -266,7 +236,6 @@ private async Task HandleRenew()
 
         await LocalStorageService.SaveMembershipAsync(userMembership);
         await ShowMessage("Üyelik iptal edildi.");
-        // Kullanıcıyı yeni plan seçmesi için yönlendirebilirsin
         Navigation.NavigateTo("/memberships");
     }
         private void ToggleEditContact()
@@ -274,7 +243,6 @@ private async Task HandleRenew()
         if (userMembership is null)
             return;
 
-        // Mod değiştirirken her seferinde mevcut veriyi doldur
         if (!isEditingContact)
         {
             editEmail = userMembership.Member.Email;
@@ -287,7 +255,7 @@ private async Task HandleRenew()
     private void CancelEditContact()
     {
         isEditingContact = false;
-        // iptalde alanları eski hâle döndür
+        // iptalde alanları eski hâline döner
         if (userMembership is not null)
         {
             editEmail = userMembership.Member.Email;
@@ -295,39 +263,11 @@ private async Task HandleRenew()
         }
     }
 
-    
-
-        // Avatar dosyası Base64 olarak burada tutulacak (isteğe bağlı)
-        private string? newAvatarBase64;
-
-
-        // 📌 Avatar dosyası seçildiğinde çalışır
-        private async Task OnAvatarChange(InputFileChangeEventArgs e)
-        {
-            var file = e.File;
-
-            using var stream = file.OpenReadStream(maxAllowedSize: 4*1024 * 1024); // 1MB
-            using var ms = new MemoryStream();
-            await stream.CopyToAsync(ms);
-
-            var base64 = Convert.ToBase64String(ms.ToArray());
-            newAvatarBase64 = $"data:{file.ContentType};base64,{base64}";
-
-            // Ekrandan hemen avatarı göstermek için
-            if (userMembership is not null)
-                userMembership.Member.AvatarUrl = newAvatarBase64;
-
-            StateHasChanged();
-        }
-
-
-        //  E-posta, telefon VE avatar birlikte burada kaydedilir
         private async Task SaveContactChanges()
         {
             if (userMembership is null)
                 return;
 
-            // Boş bırakılmasın
             if (string.IsNullOrWhiteSpace(editEmail) ||
                 string.IsNullOrWhiteSpace(editPhone))
             {
@@ -340,23 +280,14 @@ private async Task HandleRenew()
                 return;
             }
 
-            // 🔹 E-posta + Telefon güncelle
             userMembership.Member.Email = editEmail!;
             userMembership.Member.Phone = editPhone!;
 
-            // 🔹 Avatar seçilmişse onu da güncelle
-            if (!string.IsNullOrEmpty(newAvatarBase64))
-            {
-                userMembership.Member.AvatarUrl = newAvatarBase64;
-            }
 
-            // 🔹 Tüm bilgileri kaydet
             await LocalStorageService.SaveMembershipAsync(userMembership);
 
-            // Düzenleme modunu kapat
             isEditingContact = false;
 
-            // 🔹 Başarı mesajı
             contactMessage = "Bilgileriniz başarıyla güncellendi.";
             showContactMessage = true;
 
